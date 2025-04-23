@@ -6,8 +6,8 @@ const Navbar = () => {
 
   console.log(darkMode)
   return (
-    <nav className="w-full h-[70px] bg-blue-50 text-black flex items-center justify-between px-4 md:px-8 shadow-lg shadow-black left-0 z-50">
-        <div className="text-2xl font-bold text-blue-600">SentiScope</div>
+    <nav className="w-full h-[70px] fixed top-0 left-0 z-50 bg-blue-100/80 backdrop-blur-sm text-black flex items-center justify-between px-4 md:px-8 shadow-md shadow-blue-200/50">
+    <div className="text-2xl font-bold text-blue-600">SentiScope</div>
 
         <div className="flex items-center gap-2">
             <span className="hidden sm:inline text-sm font-medium">

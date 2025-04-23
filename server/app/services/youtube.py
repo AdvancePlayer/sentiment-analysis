@@ -3,7 +3,7 @@ from app.utils.helpers import remove_emoji
 from app.models.sentiment_model import analyse_data
 import os
  
-youtube_key = "AIzaSyDhjLPtoR3o9HkOn44kcF8UpxHHJ2G-V2M"
+youtube_key = os.getenv("YOUTUBE_API_KEY")
 
 def youtube_comments(video_id):
     youtube = build('youtube', 'v3', developerKey=youtube_key)
@@ -42,7 +42,8 @@ def youtube_comments(video_id):
         "channel_title": video_data['snippet']['channelTitle'],
         "view_count": video_data['statistics']['viewCount'],
         "like_count": video_data['statistics'].get('likeCount', 'N/A'),
-        "comment_count": video_data['statistics'].get('commentCount', 'N/A')
+        "comment_count": video_data['statistics'].get('commentCount', 'N/A'),
+        "thumbnail_url": video_data['snippet']['thumbnails']['high']['url']
     }
 
     print(video_details)

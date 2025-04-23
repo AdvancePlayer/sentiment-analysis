@@ -8,6 +8,8 @@ export const GetAnalysisCall = async(url) =>{
         const response = await axios.post(`${SERVER_URL}/analyse`, {
             url: url,
         });
+        console.log(response);
+        
         return response.data;
     } catch (error) {
         console.log(error);

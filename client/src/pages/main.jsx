@@ -28,6 +28,7 @@ const SentimentAnalysis = () => {
             console.log(err);
           } finally {
             setLoading(false);
+            // console.log(result)
           }
         } else {
           setError("Please enter a valid URL.");
@@ -134,7 +135,7 @@ const SentimentAnalysis = () => {
         // )}
         // </div>
 
-        <div className="min-h-screen pt-16 bg-gray-100 text-black flex flex-col items-center px-4">
+        <div className="min-h-screen pt-16 bg-gray-100 text-black flex flex-col items-center px-4 mt-10">
         <h1 className="text-4xl font-bold text-blue-600 mb-8">
             Sentiment Analysis
         </h1>
@@ -160,9 +161,21 @@ const SentimentAnalysis = () => {
         {error && <p className="mt-4 text-red-500 font-medium">{error}</p>}
         {loading && <p className="mt-4 text-blue-600 font-medium">Analyzing...</p>}
 
+        {result?.video_details?.thumbnail_url && (
+            <div className="mt-4 w-full max-w-3xl">
+                <img
+                src={result.video_details.thumbnail_url}
+                alt="Video thumbnail"
+                className="w-full rounded-md object-cover"
+                />
+            </div>
+            )}
+
         {result && !loading && (
+            
             <div className="mt-10 w-full max-w-6xl grid md:grid-cols-2 gap-6">
             <div className="bg-white text-black rounded-lg shadow-md p-6">
+                
                 <h2 className="text-xl font-bold mb-4">Overall Sentiment</h2>
                 <p
                 className={`text-2xl font-semibold mb-6 ${

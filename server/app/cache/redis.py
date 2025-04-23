@@ -8,22 +8,15 @@ import os
 redis_url = os.getenv("REDIS_URL")
 url = urlparse(redis_url)
 
-# r = redis.Redis(
-#     host=url.hostname,
-#     port=url.port,
-#     decode_responses=True,
-#     username=url.username,
-#     password=url.password,
-#     ssl=url.scheme == "rediss"
-# )
-
 r = redis.Redis(
-    host='redis-12939.c305.ap-south-1-1.ec2.redns.redis-cloud.com',
-    port=12939,
+    host=url.hostname,
+    port=url.port,
     decode_responses=True,
-    username="default",
-    password="YpVXV931aR5V0qNkK9RedgbF6a6XYFqy",
+    username=url.username,
+    password=url.password,
+    ssl=url.scheme == "rediss"
 )
+
 
 def _key(url):
     return hashlib.sha256(url.encode()).hexdigest()
